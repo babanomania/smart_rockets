@@ -9,3 +9,4 @@ and after some time will perfectly hit the target.
 
 Thank you Dan for teaching me this.
 
+![example-site](screenshot.png)
