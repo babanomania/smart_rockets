@@ -6,7 +6,7 @@ class Rocket{
         this.obstacles = obstacles;
 
         this.rwidth = 1;
-        this.length = 50;
+        this.length = 20;
 
         this.pos = createVector( (width/2) - (this.rwidth/2), height - 2 );
         this.velocity = createVector();
@@ -82,8 +82,8 @@ class Rocket{
             translate( this.pos.x, this.pos.y );
             rotate( this.velocity.heading() );
             rectMode(CENTER);
-            fill( 255 );
             noStroke();
+            fill( 255, 255 );
             rect( 0, 0, this.length, this.rwidth );
         }
 

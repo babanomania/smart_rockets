@@ -18,7 +18,7 @@ var top_score = 0;
 var top_generation = 0;
 var selection_rate = 0.5;
 
-var random_obstacles = true;
+var random_obstacles = false;
 var max_obstacles = 5;
 
 function setup() {
@@ -64,7 +64,7 @@ function draw() {
         rockets[idx].show(displayStuff);
     }
 
-    if( frameCount % 400 == 0 ){
+    if( frameCount % lifespan == 0 ){
         nextGeneration();
     }
 
@@ -78,7 +78,7 @@ function draw() {
     }
 
     text( "Generation " + gen, 20, 20 );
-    text( "Frame " + ( frameCount % 400 ), 20, 40 );
+    text( "Frame " + ( frameCount % lifespan ), 20, 40 );
     text( "Best Score " + top_score + ' G#' + top_generation, 20, 60 );
 }
 
