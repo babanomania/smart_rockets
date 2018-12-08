@@ -7,21 +7,23 @@ var rockets;
 var obstacles = [];
 
 var target_radius = 30;
-var obstacle_width = 100;
-var obstacle_height = 15;
+var obstacle_width = 150;
+var obstacle_height = 30;
 
 var gen = 0;
 var population = 100;
 var lifespan = 400;
 
-var top_score = 0;
+var top_score = 0;  
 var top_generation = 0;
+var selection_rate = 0.5;
 
 var random_obstacles = true;
 var max_obstacles = 5;
 
 function setup() {
-    createCanvas(width, height);
+    var simuation = createCanvas(width, height);
+    simuation.parent('simulation');
 
     target = new Target();
 
@@ -48,25 +50,32 @@ function setup() {
         rockets.push( rocket );
     }
 
+
 }
   
 function draw() {
     clear();
     background('#009688');
     
+    var speed = document.querySelector('#speed').value;
+    var displayStuff = ( frameCount % speed ) == 0;
+
     for( var idx = 0; idx < rockets.length; idx++ ){
-        rockets[idx].show();
+        rockets[idx].show(displayStuff);
     }
 
     if( frameCount % 400 == 0 ){
         nextGeneration();
     }
 
-    for( var idx = 0; idx < this.obstacles.length; idx++ ){
-        this.obstacles[idx].show();
-    }
+    if( displayStuff ){
+            
+        for( var idx = 0; idx < this.obstacles.length; idx++ ){
+            this.obstacles[idx].show();
+        }
 
-    target.show();
+        target.show();
+    }
 
     text( "Generation " + gen, 20, 20 );
     text( "Frame " + ( frameCount % 400 ), 20, 40 );
@@ -87,7 +96,7 @@ function nextGeneration(){
     for( var idx = 0; idx < population; idx++ ){
         var this_rocket = rockets[idx];
         var this_fitness = this_rocket.score/top_score;
-        if( this_fitness > 0.75 ){
+        if( this_fitness > ( 1 - selection_rate ) ){
             for( var idd = 0; idd < ( this_rocket.score * 100 ); idd++ ){
                 gene_pool.push( this_rocket );
             }

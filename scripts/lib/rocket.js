@@ -27,7 +27,7 @@ class Rocket{
         this.brain = brain;
     }
 
-    show(){
+    show(displayStuff){
         push();
         
         var target_dist = dist( this.pos.x, this.pos.y, this.target.pos.x, this.target.pos.y );
@@ -78,12 +78,14 @@ class Rocket{
             this.velocity.limit(4);
         } 
 
-        translate( this.pos.x, this.pos.y );
-        rotate( this.velocity.heading() );
-        rectMode(CENTER);
-        fill( 255 );
-        noStroke();
-        rect( 0, 0, this.length, this.rwidth );
+        if( displayStuff ){
+            translate( this.pos.x, this.pos.y );
+            rotate( this.velocity.heading() );
+            rectMode(CENTER);
+            fill( 255 );
+            noStroke();
+            rect( 0, 0, this.length, this.rwidth );
+        }
 
         pop();
     }

@@ -1,0 +1,25 @@
+
+  canvas {
+    padding-left: 2em;
+    padding-top: 2em;
+  }
+
+  .controls {
+    padding-left: 2em;
+  }
+
+  hr {
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+  }
+
+  body{
+    display: flex;
+
+    /* This centers our sketch horizontally. */
+    justify-content: center;
+
+    /* This centers our sketch vertically. */
+    align-items: center;\
+  }
+  
