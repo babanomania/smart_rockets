@@ -84,6 +84,8 @@ function draw() {
 
 function nextGeneration(){
 
+    updateScoreData( gen, "score_chart", top_score );
+
     for( var idx=0; idx < population; idx++ ){
         var this_rocket = rockets[idx];
         if( this_rocket.score > top_score ){
